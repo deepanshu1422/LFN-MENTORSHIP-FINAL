@@ -12,6 +12,11 @@ class Testing(unittest.TestCase):
             a = json.load(f)
         self.assertEqual(b,a)
 
+    def test_15(self):
+        t1 = {1:1, 2:2, 3:3, 4:{"a":"hello", "b":[1, 2, 3]}}
+        t2 = {1:1, 2:2, 3:3, 4:{"a":"hello", "b":[1, 3, 2, 3]}}
+        self.assertEqual({},deepdiff.DeepDiff(t1, t2, ignore_order=True))
+    
     def test_2(self):
         a=123
         b=234
@@ -32,10 +37,7 @@ class Testing(unittest.TestCase):
         thatlist = ["mango", "banana", "cherry"]    
         self.assertNotEqual(thislist,thatlist)
         
-    def test_6(self):
-        thislist = ["apple", "banana", "cherry"]
-        thatlist = ["apple", "banana", "cherry"]    
-        self.assertEqual(thislist,thatlist) 
+    
     
     def test_7(self):
         x = isinstance(5, int)
@@ -53,6 +55,11 @@ class Testing(unittest.TestCase):
         "year": 1964
         }
         self.assertDictEqual(thisdict,thatdict)
+    
+    def test_6(self):
+        thislist = ["apple", "banana", "cherry"]
+        thatlist = ["apple", "banana", "cherry"]    
+        self.assertEqual(thislist,thatlist) 
         
     def test_9(self):
         py1_list = ['a', 'e', 'i', 'o', 'u']
